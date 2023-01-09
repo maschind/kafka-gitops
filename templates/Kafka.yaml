@@ -3,6 +3,8 @@ kind: Kafka
 metadata:
   name: my-cluster
   namespace: kafka-dev
+  labels:
+    app.kubernetes.io/instance: kafka-dev
 spec:
   entityOperator:
     topicOperator: {}
