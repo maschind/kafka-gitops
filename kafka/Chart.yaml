@@ -1,6 +1,6 @@
 apiVersion: v2
 name: kafka
-description: A Helm chartto deploy a Kafka instance for AMQ Streams Operator
+description: A Helm chart to deploy a Kafka instance for AMQ Streams Operator
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
