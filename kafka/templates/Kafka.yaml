@@ -4,8 +4,8 @@ metadata:
   name: my-cluster
 spec:
   kafka:
-    version: 3.1.0
-    replicas: 3
+    version: {{ .Values.kafka.version }}
+    replicas: {{ .Values.kafka.replicas }}
     authorization:
       type: simple
       superUsers:
