@@ -7,3 +7,6 @@ users:
     topics: 
       - user2.topic1
       - user1.topic1
+  - name: user3
+    topics: 
+      - user1.topic1
