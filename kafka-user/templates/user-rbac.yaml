@@ -32,6 +32,12 @@ spec:
           name: {{ $topic }}
           patternType: literal
         operation: Describe
+      # Consumer Groups
+      - resource:
+          type: group
+          name: {{ $users.name }}
+          patternType: prefix
+        operation: Read
 {{- end }}
 ---
 {{- end }}

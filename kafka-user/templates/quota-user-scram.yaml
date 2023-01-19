@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaUser
 metadata:
-  name: sample-user-scram
+  name: quota-user-scram
   labels:
     strimzi.io/cluster: my-cluster
 spec:
@@ -43,3 +43,7 @@ spec:
         name: apps.samples.greetings
         patternType: literal
       operation: Describe
+  quotas:
+    producerByteRate: 1048576
+    consumerByteRate: 2097152
+    requestPercentage: 55
