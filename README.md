@@ -25,7 +25,7 @@ security.protocol=SASL_PLAINTEXT
 sasl.mechanism=SCRAM-SHA-512
 sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username=user2 password=aZiKxlR44goL;
 EOF
-bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9094 --topic user1.topic1 --consumer.config=/tmp/consumer.properties --group user2.testing
+bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9094 --topic user1.topic2 --consumer.config=/tmp/consumer.properties --group user2.testing
 "
 ```
 
