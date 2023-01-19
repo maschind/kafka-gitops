@@ -16,7 +16,7 @@ EOF
 bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9094 --topic user1.topic1 --producer.config=/tmp/producer.properties
 "
 ```
-```
+
 Consumer
 ```
 oc run kafka-consumer -ti --image=quay.io/strimzi/kafka:latest-kafka-3.2.3 --rm=true --restart=Never -- /bin/bash -c "cat >/tmp/consumer.properties <<EOF
@@ -28,7 +28,7 @@ EOF
 bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9094 --topic user1.topic1 --consumer.config=/tmp/consumer.properties --group user2.testing
 "
 ```
----
+
 Performance Tool
 ```
 oc run kafka-producer-perf-test-metrics -ti --image=quay.io/strimzi/kafka:latest-kafka-3.2.3 --rm=true --restart=Never -- /bin/bash -c "cat >/tmp/producer.properties <<EOF 
