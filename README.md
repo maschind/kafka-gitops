@@ -13,7 +13,7 @@ security.protocol=SASL_PLAINTEXT
 sasl.mechanism=SCRAM-SHA-512
 sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username=user1 password=k5CtKkp30xai;
 EOF
-bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9094 --topic user1.topic1 --producer.config=/tmp/producer.properties
+bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9094 --topic user1.topic1 --producer.config=/tmp/producer.properties --timeout 5000 --retry-backoff-ms 3000
 "
 ```
 
