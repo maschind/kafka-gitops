@@ -3,7 +3,7 @@ kind: KafkaUser
 metadata:
   name: admin-user-scram
   labels:
-    strimzi.io/cluster: {{ .Release.Name }}-kafka
+    strimzi.io/cluster: {{ .Release.Name }}
 spec:
   authentication:
     type: scram-sha-512
