@@ -13,13 +13,14 @@ spec:
     type: simple
     acls:
     {{- range $topicIndex, $topic := $user.topics }}
-      {{- range $operationIndex, $operation := $topic.operations }}
       - resource:
           type: topic
           name: {{ $topic.name }}
           patternType: literal
-        operation: {{ $operation }}
+        operations:
+        {{- range $operationIndex, $operation := $topic.operations }}
+          - {{ $operation }}
+        {{- end }}
         host: "*"
-      {{- end }}
     {{- end }}
 {{- end }}
