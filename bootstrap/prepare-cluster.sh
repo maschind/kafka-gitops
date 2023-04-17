@@ -30,24 +30,29 @@ wait_for_operator_installation() {
 echo "Start bootstrapping the cluster... "
 
 oc apply -f gitops-operator.yml
-oc apply -f amq-streams-operator.yml
-
-oc new-project kafka
-
-oc apply -f cluster/cluster-monitoring-config.yaml
-oc apply -f cluster/user-workload-monitoring-config.yaml
 
 operator_name="openshift-gitops-operator"
 operator_namespace="openshift-operators"
 wait_for_operator_installation "$operator_name" "$operator_namespace" 300  # Wait up to 5 minutes (300 seconds)
 
-operator_name="amqstreams"
-operator_namespace="openshift-operators"
-wait_for_operator_installation "$operator_name" "$operator_namespace" 300  # Wait up to 5 minutes (300 seconds)
+oc new-project kafka 
 
-oc apply -f gitops-kafka-application.yaml
 oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n kafka
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
+
+oc apply -f gitops-applications/gitops-bootstrap-application.yaml
+oc apply -f gitops-applications/gitops-kafka-application.yaml
 
 
+#oc apply -f cluster/cluster-monitoring-config.yaml
+#oc apply -f cluster/user-workload-monitoring-config.yaml
 
+#operator_name="openshift-gitops-operator"
+#operator_namespace="openshift-operators"
+#wait_for_operator_installation "$operator_name" "$operator_namespace" 300  # Wait up to 5 minutes (300 seconds)
 
+#operator_name="amqstreams"
+#operator_namespace="openshift-operators"
+#wait_for_operator_installation "$operator_name" "$operator_namespace" 300  # Wait up to 5 minutes (300 seconds)
+
+#oc apply -f gitops-kafka-application.yaml
