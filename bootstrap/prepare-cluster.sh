@@ -42,17 +42,6 @@ oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:opens
 
 oc apply -f gitops-applications/gitops-bootstrap-application.yaml
 oc apply -f gitops-applications/gitops-kafka-application.yaml
+oc apply -f gitops-applications/gitops-kafka-topic-application.yaml
+oc apply -f gitops-applications/gitops-kafka-user-application.yaml
 
-
-#oc apply -f cluster/cluster-monitoring-config.yaml
-#oc apply -f cluster/user-workload-monitoring-config.yaml
-
-#operator_name="openshift-gitops-operator"
-#operator_namespace="openshift-operators"
-#wait_for_operator_installation "$operator_name" "$operator_namespace" 300  # Wait up to 5 minutes (300 seconds)
-
-#operator_name="amqstreams"
-#operator_namespace="openshift-operators"
-#wait_for_operator_installation "$operator_name" "$operator_namespace" 300  # Wait up to 5 minutes (300 seconds)
-
-#oc apply -f gitops-kafka-application.yaml

@@ -1,6 +1,14 @@
 
 * install AMQ Streams Operator 
 * install Red Hat gitops Operator
+```
+oc new-project kafka
+
+helm repo add strimzi https://strimzi.io/charts/
+helm repo update
+helm install amq-streams-operator strimzi/strimzi-kafka-operator --set watchNamespaces='*',installCRDs=true,clusterOperator.enabled=true
+```
+
 
 ```
 oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n <Namespace_Name> 

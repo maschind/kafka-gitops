@@ -1,0 +1,25 @@
+{{- range $userIndex, $user := .Values.kafkaUsers }}
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: {{ $user.name }}
+  labels:
+    strimzi.io/cluster: {{ $.Values.kafkaCluster }}
+spec:
+  authentication:
+    type: tls
+  authorization:
+    type: simple
+    acls:
+    {{- range $topicIndex, $topic := $user.topics }}
+      {{- range $operationIndex, $operation := $topic.operations }}
+      - resource:
+          type: topic
+          name: {{ $topic.name }}
+          patternType: literal
+        operation: {{ $operation }}
+        host: "*"
+      {{- end }}
+    {{- end }}
+{{- end }}

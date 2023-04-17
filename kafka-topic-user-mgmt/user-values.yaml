@@ -1,0 +1,33 @@
+kafkaCluster: kafka01
+kafkaUsers:
+  - name: kafka-user-1
+    topics:
+      - name: shared-topic1
+        operations: 
+          - Read
+          - Write
+          - Describe
+  - name: kafka-user-2
+    topics:
+      - name: shared-topic1
+        operations: 
+          - Read
+          - Describe
+  - name: kafka-user-3
+    topics:
+      - name: exclusive-topic1
+        operations: 
+          - Read
+          - Describe
+  - name: kafka-user-4
+    topics:
+      - name: exclusive-topic2
+        operations:
+          - Read
+          - Write
+          - Create
+          - Describe
+          - Delete
+          - Alter
+          - DescribeConfigs
+          - AlterConfigs

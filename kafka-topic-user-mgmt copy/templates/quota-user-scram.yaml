@@ -1,0 +1,49 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: quota-user-scram
+  labels:
+    strimzi.io/cluster: my-cluster
+spec:
+  authentication:
+    type: scram-sha-512
+  authorization:
+    type: simple
+    acls:
+    # Consumer Groups
+    - resource:
+        type: group
+        name: sample-group
+        patternType: literal
+      operation: Read
+    # Consumer ACLs for topic apps.samples.greetings
+    - resource:
+        type: topic
+        name: apps.samples.greetings
+        patternType: literal
+      operation: Read
+    - resource:
+        type: topic
+        name: apps.samples.greetings
+        patternType: literal
+      operation: Describe
+    # Producer ACLs for topic apps.samples.greetings
+    - resource:
+        type: topic
+        name: apps.samples.greetings
+        patternType: literal
+      operation: Write
+    - resource:
+        type: topic
+        name: apps.samples.greetings
+        patternType: literal
+      operation: Create
+    - resource:
+        type: topic
+        name: apps.samples.greetings
+        patternType: literal
+      operation: Describe
+  quotas:
+    producerByteRate: 1048576
+    consumerByteRate: 2097152
+    requestPercentage: 55
