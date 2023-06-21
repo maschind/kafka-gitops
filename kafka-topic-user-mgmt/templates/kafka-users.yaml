@@ -24,7 +24,7 @@ spec:
         host: "*"
       - resource:
           type: group
-          name: {{ $topic.name }}-group
+          name: {{ $user.name }}-group
           patternType: literal
         operations:
         {{- range $operationIndex, $operation := $topic.operations }}
