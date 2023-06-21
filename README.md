@@ -1,4 +1,4 @@
-# Instruction 
+# Instructions 
 * install AMQ Streams Operator 
 * install Red Hat gitops Operator
 ```
