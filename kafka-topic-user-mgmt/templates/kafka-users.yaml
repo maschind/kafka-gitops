@@ -22,5 +22,14 @@ spec:
           - {{ $operation }}
         {{- end }}
         host: "*"
+      - resource:
+          type: group
+          name: {{ $topic.name }}-group
+          patternType: literal
+        operations:
+        {{- range $operationIndex, $operation := $topic.operations }}
+          - {{ $operation }}
+        {{- end }}
+        host: "*"
     {{- end }}
 {{- end }}
