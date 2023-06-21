@@ -1,6 +1,6 @@
 kafkaCluster: kafka01
 kafkaTopics:
-  - name: shared-topic
+  - name: shared-topic1
     partitions: 3
     replicationFactor: 2
     config:
