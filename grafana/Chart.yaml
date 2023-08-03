@@ -1,7 +1,6 @@
 apiVersion: v2
-name: KafkaTopic
-description: A Helm chart to deploy a Kafka topic
-type: application
+name: kafka
+description: A Helm chart to deploy a Grafana instance
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
