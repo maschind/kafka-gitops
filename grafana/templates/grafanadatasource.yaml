@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.datasource.name }}-token-generator
+  namespace: {{ .Values.datasource.namespace }}
+spec:
+  template:
+    spec:
+      serviceAccountName: {{ .Values.datasource.serviceAccountName }}
+      restartPolicy: OnFailure
+      containers:
+        - name: token-generator
+          image: bitnami/kubectl:latest
+          command: ["/bin/sh", "-c"]
+          args:
+          - |
+            oc adm policy add-cluster-role-to-user cluster-monitoring-view -z grafana-serviceaccount
+            TOKEN=$(oc create token grafana-serviceaccount --duration=8760h -n grafana)
+            kubectl create secret generic {{ .Values.datasource.tokenSecretName }} --from-literal=token=$TOKEN -n {{ .Values.datasource.namespace }}

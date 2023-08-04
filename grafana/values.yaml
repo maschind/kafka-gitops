@@ -1,1 +1,5 @@
+datasource:
+  namespace: grafana
+  serviceAccountName: grafana-serviceaccount
+  tokenSecretName: grafana-serviceaccount-token
 
