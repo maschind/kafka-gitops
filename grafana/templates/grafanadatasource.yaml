@@ -10,7 +10,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: token-generator
-          image: bitnami/kubectl:latest
+          image: registry.redhat.io/openshift4/ose-cli:latest
           command: ["/bin/sh", "-c"]
           args:
           - |
