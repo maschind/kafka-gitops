@@ -40,8 +40,13 @@ oc new-project kafka
 oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n kafka
 oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 
+oc new-project grafana
+oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n grafana
+
+
 oc apply -f gitops-applications/gitops-bootstrap-application.yaml
 oc apply -f gitops-applications/gitops-kafka-application.yaml
 oc apply -f gitops-applications/gitops-kafka-topic-application.yaml
 oc apply -f gitops-applications/gitops-kafka-user-application.yaml
+oc apply -f gitops-applications/gitops-grafana-application.yaml
 
