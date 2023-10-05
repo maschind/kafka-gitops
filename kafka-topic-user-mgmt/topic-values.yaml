@@ -17,3 +17,4 @@ kafkaTopics:
         ms: 604800000
       segment:
         bytes: 1073741824
+  - name: new-topic
