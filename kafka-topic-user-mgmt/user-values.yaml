@@ -15,7 +15,7 @@ kafkaUsers:
           - Describe
   - name: kafka-user-3
     topics:
-      - name: exclusive-topic1
+      - name: shared-topic1
         operations: 
           - Read
           - Describe
